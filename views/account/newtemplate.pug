@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .page-header
+        h3 New email template
+
+    <form classs='form-horizontal' action='/account/newemailer'method='POST'>
+    <input type='hidden' name='_csrf' value=#{_csrf}>
+    <div class='form-group'>
+    <input type='text' value=#{user.email} />
+    </div>
+    </form>
+
+    form.form-horizontal(action='/account/newemailer', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='userid', value=user.id)
+    .form-group
+        label.col-sm-12.control-label(for='tempname') Template Name
+        .col-sm-12
+            input.form-control(type='text', name='tempname', id='tempname')
+    .form-group
+      label.col-sm-12.control-label(for='tempname') Template Code(HTML)
+      .col-sm-12
+        textarea.form-control.tt(name='tempcode', id='tempcode', cols="30", rows="10")
+        
